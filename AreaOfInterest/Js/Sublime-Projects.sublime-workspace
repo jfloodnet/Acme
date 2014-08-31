@@ -1,0 +1,404 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"subl",
+				"sublimeProjectName"
+			],
+			[
+				"sub",
+				"sublimeProjectContent"
+			],
+			[
+				"subli",
+				"sublimeProjects"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\"name\": \"d3\",\n  \"version\": \"3.4.11\",\n  \"main\": \"d3.js\",\n  \"scripts\": [\n    \"d3.js\"\n  ],\n  \"ignore\": [\n    \".DS_Store\",\n    \".git\",\n    \".gitignore\",\n    \".npmignore\",\n    \".travis.yml\",\n    \"Makefile\",\n    \"bin\",\n    \"component.json\",\n    \"index.js\",\n    \"lib\",\n    \"node_modules\",\n    \"package.json\",\n    \"src\",\n    \"test\"\n  ],\n  \"homepage\": \"https://github.com/mbostock/d3\",\n  \"_release\": \"3.4.11\",\n  \"_resolution\": {\n    \"type\": \"version\",\n    \"tag\": \"v3.4.11\",\n    \"commit\": \"9dbb2266543a6c998c3552074240efb36e4c7cab\"\n  },\n  \"_source\": \"git://github.com/mbostock/d3.git\",\n  \"_target\": \"~3.4.11\",\n  \"_originalSource\": \"d3\",\n  \"_direct\": true\n}",
+			"file": "components/d3/.bower.json",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 646,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "bin\nlib\nsrc\ntest\n",
+			"file": "components/d3/.spmignore",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 17,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/MSBuild/MSBuild.sublime-build",
+	"command_palette":
+	{
+		"height": 173.0,
+		"selected_items":
+		[
+			[
+				"bower",
+				"Bower: Install"
+			],
+			[
+				"bower: install",
+				"Bower: Install"
+			],
+			[
+				"bower ",
+				"Bower: Install"
+			],
+			[
+				"bower install ",
+				"Bower: Install"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"insatll",
+				"Package Control: Install Package"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git init",
+				"Git: Init"
+			],
+			[
+				"git",
+				"Git: Init"
+			],
+			[
+				"git ",
+				"Git: Init"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"github: cop",
+				"GitHub: Copy Gist to Clipboard"
+			],
+			[
+				"github: copy",
+				"GitHub: Copy Gist to Clipboard"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git blame",
+				"Git: Blame"
+			],
+			[
+				"blame",
+				"Git: Blame"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git log",
+				"Git: Log All"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 225.0,
+		"history":
+		[
+			"run /src",
+			"oi package install C-Sharp",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/dev.git/Acme/AreaOfInterest/Js/components/d3/bower.json",
+		"/C/dev.git/Acme/AreaOfInterest/Js/freedraw-map.js",
+		"/C/dev.git/Acme/AreaOfInterest/Js/.bowerrc",
+		"/C/dev.git/campaignmonitor/SQL.txt",
+		"/C/dev.git/GeneticAlgo/NServciceBus.Endpoints",
+		"/C/dev.git/GeneticAlgo/.git/config",
+		"/C/Users/Jospeh/Dropbox/P/Emp_Contact.txt",
+		"/C/Program Files/Sublime Text 3/Packages/OmniSharpSublime/OmniSharpServer/OmniSharp/Overrides/GetOverrideTargetsModule.cs",
+		"/C/Program Files/Sublime Text 3/Packages/OmniSharpSublime/commands/go_to_definition.py",
+		"/C/dev.git/GenerateSublimeProjects/src/GenProjects/src/Properties/AssemblyInfo.cs",
+		"/C/dev.git/GenerateSublimeProjects/src/GenProjects/src/template.gen",
+		"/C/dev.git/GenerateSublimeProjects/src/GenProjects/src/GenProjects.csproj",
+		"/C/dev.git/modernisation-quoting/MyFloor/Console.Library/InteractiveConsole.cs",
+		"/C/dev.git/modernisation-quoting/MyFloor/myfloor.sublime-project",
+		"/C/dev.git/modernisation-quoting/MyFloor/Servcorp.Sales.Web/Servcorp.Sales.Web.csproj",
+		"/C/dev.git/modernisation-quoting/MyFloor/ClientIdentityConsole/Program.cs",
+		"/C/Users/Jospeh/AppData/Roaming/Sublime Text 3/Packages/User/C#.sublime-settings"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"bar.cs",
+			"SourceLocator",
+			"oicfgoptions",
+			"oi.source.prioritization",
+			"AppSettings",
+			"CommandRunner",
+			"could not find package",
+			"Process"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "components/d3/.bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 646,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								130,
+								130
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "components/d3/.spmignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 237.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"output.shell_turtlestein":
+	{
+		"height": 0.0
+	},
+	"project": "Sublime-Projects.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"goto",
+				"OmniSharpServer\\OmniSharp.Tests\\GoToImplementation\\GoToImplementation.cs"
+			],
+			[
+				"",
+				"Context.sublime-menu"
+			],
+			[
+				"gen",
+				"src\\GenProjects\\src\\GenProjects.csproj"
+			],
+			[
+				"pr",
+				"src\\GenProjects\\src\\Program.cs"
+			],
+			[
+				"pro",
+				"src\\GenProjects\\src\\Program.cs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 228.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

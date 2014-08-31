@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -152,9 +154,11 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\leaflet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Js\freedraw-map.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -168,9 +172,48 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\concavehull\concavehull.js" />
+    <Content Include="Scripts\d3\.bower.json" />
+    <Content Include="Scripts\d3\.spmignore" />
+    <Content Include="Scripts\d3\bower.json" />
+    <Content Include="Scripts\d3\composer.json" />
+    <Content Include="Scripts\d3\CONTRIBUTING.md" />
+    <Content Include="Scripts\d3\LICENSE" />
+    <Content Include="Scripts\d3\README.md" />
+    <Content Include="Scripts\evispa-timo-jsclipper\.bower.json" />
+    <Content Include="Scripts\evispa-timo-jsclipper\bower.json" />
+    <Content Include="Scripts\evispa-timo-jsclipper\README.md" />
+    <Content Include="Scripts\graham_scan\graham_scan.js" />
+    <Content Include="Scripts\hammerjs\.bower.json" />
+    <Content Include="Scripts\hammerjs\.bowerrc" />
+    <Content Include="Scripts\hammerjs\.jscsrc" />
+    <Content Include="Scripts\hammerjs\.jshintrc" />
+    <Content Include="Scripts\hammerjs\.travis.yml" />
+    <Content Include="Scripts\hammerjs\bower.json" />
+    <Content Include="Scripts\hammerjs\CHANGELOG.md" />
+    <Content Include="Scripts\hammerjs\component.json" />
+    <Content Include="Scripts\hammerjs\CONTRIBUTING.md" />
+    <Content Include="Scripts\hammerjs\Gruntfile.coffee" />
+    <Content Include="Scripts\hammerjs\hammer.min.map" />
+    <Content Include="Scripts\hammerjs\LICENSE.md" />
+    <Content Include="Scripts\hammerjs\package.json" />
+    <Content Include="Scripts\hammerjs\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\d3\d3.js" />
+    <Content Include="Scripts\d3\d3.min.js" />
+    <Content Include="Scripts\evispa-timo-jsclipper\clipper.js" />
+    <Content Include="Scripts\evispa-timo-jsclipper\clipper_unminified.js" />
+    <Content Include="Scripts\evispa-timo-jsclipper\README.txt" />
+    <Content Include="Scripts\graham_scan\graham_scan.min.js" />
+    <Content Include="Scripts\hammerjs\.gitignore" />
+    <Content Include="Scripts\hammerjs\hammer.js" />
+    <Content Include="Scripts\hammerjs\hammer.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\leaflet-0.6.4.js" />
+    <Content Include="Scripts\leaflet-0.6.4.min.js" />
+    <Content Include="Scripts\leaflet.freedraw.js" />
+    <Content Include="Scripts\leaflet.freedraw.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -227,6 +270,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -41,7 +41,7 @@ namespace AreaOfInterest.Controllers
 
     public class AreaOfInterestController : ApiController
     {
-        public AreaOfInterest[] Get()
+        public string[] Get()
         {
             var node = new Uri("http://localhost:9200");
             var settings = new ConnectionSettings(
@@ -50,14 +50,44 @@ namespace AreaOfInterest.Controllers
             );
 
             var client = new ElasticClient(settings);
+            var results = client.Search<Interest>(d => d);
 
-            return client.Search<AreaOfInterest>(s =>
-                s.Query(q => q.GeoShapePoint(p => p.OnField(x => x.PolygonShape).Coordinates(new[] { 100.9, 0.1 }))))
-                .Documents.ToArray();
+
+            var result2 = client.Search<Interest>(
+                  s => s.QueryRaw(
+
+                      @"
+{ 
+    'filtered': { 
+        'query': { 
+            'match_all': {} 
+        },
+        'filter': {
+            'geo_shape': {
+                'polygonShape': {
+                    'shape': {
+                        'type' : 'polygon',
+                        'coordinates' : [
+                            [
+                                [51.5014232474337,-0.0896930694580078],
+                                [51.5011561006944,-0.0905513763427734],
+                                [51.5016369636976,-0.0901222229003906],
+                                [51.5014232474337,-0.0896930694580078]
+                            ]
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
+".Replace('\'','"')));
+
+            return results.Documents.Select(z => z.Id).ToArray();
 
         }
 
-        public HttpResponseMessage Post(string id)
+        public HttpResponseMessage Post(string id, [FromBody]LatLong[][] latLngs)
         {
             var node = new Uri("http://localhost:9200");
             var settings = new ConnectionSettings(
@@ -67,31 +97,50 @@ namespace AreaOfInterest.Controllers
 
             var client = new ElasticClient(settings);
 
-            AreaOfInterest a = new AreaOfInterest
+            double[][][] coordinates = latLngs.Select(
+                latlng => 
+                  
+                    latlng.Select( x => new[] { x.Lat, x.Lng }).ToArray()).ToArray();
+
+
+
+            Interest a = new Interest
             {
 
-                User = id,
-                PolygonShape =
+                Id = id,
+                Area =
 
                 new PolygonGeoShape
                 {
-                    Coordinates = new[] { 
-						    new[] { new[] { 100.0, 0.0 }, new[] { 101.0, 0.0 }, new[] { 101.0, 1.0 }, new[] { 100.0, 1.0 }, new [] { 100.0, 0.0 } },
-						    new[] { new[] { 100.2, 0.2}, new[] { 100.8, 0.2 }, new[] { 100.8, 0.8}, new[] { 100.2, 0.8 }, new [] { 100.2, 0.2} }
-				    }
+                    Coordinates =  coordinates 
                 }
             };
-
-
-            client.Index(a);
+            
+            client.Index(a, 
+                 i => i
+                .Id(id)
+                .Refresh()
+                .Ttl("1m")
+                );
 
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
     }
 
-    public class AreaOfInterest
+    public class Interest
     {
-        public string User { get; set; }
-        public PolygonGeoShape PolygonShape { get; set; }
+        public string Id { get; set; }
+        public PolygonGeoShape Area { get; set; }
+    }
+
+    public class LatLong
+    {
+        public double Lat { get; set; }
+        public double Lng { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[{0},{1}]",Lat, Lng);
+        }
     }
 }
