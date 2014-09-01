@@ -26,14 +26,6 @@
 				"buffer_size": 73,
 				"line_ending": "Unix"
 			}
-		},
-		{
-			"file": ".bowerrc",
-			"settings":
-			{
-				"buffer_size": 28,
-				"line_ending": "Windows"
-			}
 		}
 	],
 	"build_system": "Packages/MSBuild/MSBuild.sublime-build",
@@ -162,6 +154,8 @@
 	},
 	"file_history":
 	[
+		"/C/dev.git/Acme/AreaOfInterest/.bowerrc",
+		"/C/Users/Jospeh/Desktop/eventenrichment.txt",
 		"/C/dev.git/Acme/AreaOfInterest/Js/components/d3/bower.json",
 		"/C/dev.git/Acme/AreaOfInterest/Js/freedraw-map.js",
 		"/C/dev.git/Acme/AreaOfInterest/Js/.bowerrc",
@@ -222,7 +216,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -245,34 +239,6 @@
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": ".bowerrc",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 28,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								28,
-								28
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

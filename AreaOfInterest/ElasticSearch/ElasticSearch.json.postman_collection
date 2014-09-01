@@ -1,0 +1,52 @@
+{
+	"id": "9bc6f946-08f4-55f5-8754-aacb29a60185",
+	"name": "ElasticSearch",
+	"description": "",
+	"order": [
+		"51239dec-610b-fe33-9161-43a16f8a9c25",
+		"c73265bc-e7c6-d863-b322-8a37d1c962b2"
+	],
+	"folders": [],
+	"timestamp": 1409573935621,
+	"synced": false,
+	"requests": [
+		{
+			"id": "51239dec-610b-fe33-9161-43a16f8a9c25",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9200/areas-of-interest/interest/_mapping",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"data": "{\n  \"interest\":{  \n     \"properties\":{  \n       \"area\":{\n         \"type\": \"geo_shape\",\n         \"tree\": \"quadtree\",\n         \"distance_error_pct\": 0.0\n       },\n       \"id\":{  \n         \"type\":\"string\"\n       }\n     }\n  }\n}",
+			"dataMode": "raw",
+			"name": "Create Mapping",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1409573960417,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "9bc6f946-08f4-55f5-8754-aacb29a60185",
+			"synced": false
+		},
+		{
+			"id": "c73265bc-e7c6-d863-b322-8a37d1c962b2",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9200/areas-of-interest/",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"data": "",
+			"dataMode": "raw",
+			"name": "Create Index",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1409574008779,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"collectionId": "9bc6f946-08f4-55f5-8754-aacb29a60185",
+			"synced": false
+		}
+	]
+}

@@ -24,20 +24,33 @@
         freeDraw.options.setPolygonSimplification(true);
         freeDraw.options.setHullAlgorithm('Wildhoney/ConcaveHull');
 
-        freeDraw.on('markers', function getMarkers(eventData) {
+        var interest;
 
-            eventData.latLngs
+        freeDraw.on('markers', function getMarkers(eventData) {
+            interest = eventData.latLngs;
+        });
+
+        $("#submit").click(function () {
             $.ajax({
                 type: "POST",
-                url: "/api/AreaOfInterest/joe",
-                data: JSON.stringify(eventData.latLngs),
+                url: "/api/AreaOfInterest/" + $("#username").val(),
+                data: JSON.stringify(interest),
                 contentType: "application/json",
-
                 success: function () {
+                    interest = [];
                 }
             });
-            
+        });
 
+        $("#find").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/AreaOfInterest/?latLngs=" + JSON.stringify(interest),
+                success: function (response) {
+                    interest = [];
+                    console.log(response);
+                }
+            });
         });
 
         map.addLayer(freeDraw);

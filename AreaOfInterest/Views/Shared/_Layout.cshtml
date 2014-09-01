@@ -15,13 +15,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                </button>                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li><input type="text" id="username" placeholder="username" /></li>
+                    <li><input type="submit" id="submit" value="Submit interest" /></li>
+                    <li><input type="button" id="find" value="Find interested parties"/></li>
                 </ul>
             </div>
         </div>

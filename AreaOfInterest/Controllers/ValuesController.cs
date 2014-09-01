@@ -5,111 +5,55 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Nest;
+using System.Threading.Tasks;
+using System.Web.Http.Controllers;
+using Newtonsoft.Json;
+using System.Web.Http.ValueProviders;
+using System.Web.Http.ModelBinding;
 
 namespace AreaOfInterest.Controllers
 {
-    public class ValuesController : ApiController
-    {
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
-    }
-
-
     public class AreaOfInterestController : ApiController
     {
-        public string[] Get()
+        private readonly ElasticClient client;
+
+        public AreaOfInterestController()
         {
             var node = new Uri("http://localhost:9200");
             var settings = new ConnectionSettings(
                 node,
                 defaultIndex: "areas-of-interest"
-            );
+            ).SetDefaultIndex("areas-of-interest");
 
-            var client = new ElasticClient(settings);
-            var results = client.Search<Interest>(d => d);
-
-
-            var result2 = client.Search<Interest>(
-                  s => s.QueryRaw(
-
-                      @"
-{ 
-    'filtered': { 
-        'query': { 
-            'match_all': {} 
-        },
-        'filter': {
-            'geo_shape': {
-                'polygonShape': {
-                    'shape': {
-                        'type' : 'polygon',
-                        'coordinates' : [
-                            [
-                                [51.5014232474337,-0.0896930694580078],
-                                [51.5011561006944,-0.0905513763427734],
-                                [51.5016369636976,-0.0901222229003906],
-                                [51.5014232474337,-0.0896930694580078]
-                            ]
-                        ]
-                    }
-                }
-            }
+            client = new ElasticClient(settings);
         }
-    }
-}
-".Replace('\'','"')));
-
-            return results.Documents.Select(z => z.Id).ToArray();
-
-        }
-
-        public HttpResponseMessage Post(string id, [FromBody]LatLong[][] latLngs)
+        public string[] Get([ModelBinder(typeof(PolygonModelBinder))]LatLong[][] latLngs)
         {
-            var node = new Uri("http://localhost:9200");
-            var settings = new ConnectionSettings(
-                node,
-                defaultIndex: "areas-of-interest"
-            );
-
-            var client = new ElasticClient(settings);
-
             double[][][] coordinates = latLngs.Select(
-                latlng => 
-                  
-                    latlng.Select( x => new[] { x.Lat, x.Lng }).ToArray()).ToArray();
+                latlng => latlng.Select(x => new[] { x.Lat, x.Lng }).ToArray()).ToArray();
 
+            var result1 = client.Search<Interest>(s => s
+          	.From(0)
+				.Size(10)
+				.Query(q => q
+					.GeoShapePolygon(qs => qs
+						.OnField(p => p.Area)
+						.Coordinates(coordinates)
+					)
+				)
+            );
+            return result1.Documents.Select(x => x.Id).ToArray();
+        }
 
+        public async Task<HttpResponseMessage> Post(string id, [FromBody]LatLong[][] latLngs)
+        {
+            double[][][] coordinates = latLngs.Select(
+                latlng => latlng.Select( x => new[] { x.Lat, x.Lng }).ToArray()).ToArray();
 
             Interest a = new Interest
             {
-
                 Id = id,
                 Area =
-
                 new PolygonGeoShape
                 {
                     Coordinates =  coordinates 
@@ -119,6 +63,7 @@ namespace AreaOfInterest.Controllers
             client.Index(a, 
                  i => i
                 .Id(id)
+                
                 .Refresh()
                 .Ttl("1m")
                 );
@@ -141,6 +86,44 @@ namespace AreaOfInterest.Controllers
         public override string ToString()
         {
             return string.Format("[{0},{1}]",Lat, Lng);
+        }
+    }
+
+    public class PolygonModelBinder : 
+        System.Web.Http.ModelBinding.IModelBinder
+    {
+
+        public bool BindModel(HttpActionContext actionContext, System.Web.Http.ModelBinding.ModelBindingContext bindingContext)
+        {
+            if (bindingContext.ModelType != typeof(LatLong[][]))
+            {
+                return false;
+            }
+
+            ValueProviderResult val = bindingContext.ValueProvider.GetValue(
+                bindingContext.ModelName);
+            if (val == null)
+            {
+                return false;
+            }
+
+            string key = val.RawValue as string;
+            if (key == null)
+            {
+                bindingContext.ModelState.AddModelError(
+                    bindingContext.ModelName, "Wrong value type");
+                return false;
+            }
+
+            var latLong = JsonConvert.DeserializeObject<LatLong[][]>(val.RawValue.ToString(), new JsonSerializerSettings());
+            if(latLong !=null){
+                bindingContext.Model = latLong;
+                return true;
+            }
+
+            bindingContext.ModelState.AddModelError(
+                bindingContext.ModelName, "Cannot convert value to Location");
+            return false;
         }
     }
 }
